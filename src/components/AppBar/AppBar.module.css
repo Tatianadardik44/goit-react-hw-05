@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+.link {
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+.active {
+  color: red;
+}
