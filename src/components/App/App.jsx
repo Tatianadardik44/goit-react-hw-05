@@ -16,7 +16,7 @@ function App() {
       <AppBar/>
       <Routes>
         <Route path="/" element={< HomePage />} />
-        <Route path="/movieDetailsPage/:id" element={<MovieDetailsPage/>}/>
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />}/>
         <Route path="/moviesPage" element={<MoviesPage />} />
         <Route path="*" element={<NotFoundPage/>} />
    </Routes>

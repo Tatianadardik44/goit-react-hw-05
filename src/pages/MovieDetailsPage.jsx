@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { fetchMovieById } from "../components/Gallery/Gallery";
 const MovieDetailsPage = () => {
-    const { id } = useParams();
+    const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState(false);
     useEffect(() => {
       
         const getData = async () => {
             try {
-                const data = await fetchMovieById(id)
+                const data = await fetchMovieById(movieId)
                 setMovie(data);
             } catch (error) {
                 setError(true)
@@ -26,5 +26,6 @@ const MovieDetailsPage = () => {
         
         </div>
     )
+   
 }
 export default MovieDetailsPage

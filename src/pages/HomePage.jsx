@@ -4,14 +4,11 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        
         fetchList()
             .then(data => {
                 if (data && data.results) {
                     setMovies(data.results);
-                   
-                    
-                }
+                   }
             }).catch();
         
     },[]) 
@@ -22,7 +19,7 @@ const HomePage = () => {
                 <ul>
                     {movies.map(movie => (
                         <li key={movie.id}>
-                                <Link to={`${movie.id}`}>{movie.title}</Link>
+                                 <Link to={`${movie.id}`}>{movie.title}</Link>
                                 </li>
                     ))}
                     </ul>
