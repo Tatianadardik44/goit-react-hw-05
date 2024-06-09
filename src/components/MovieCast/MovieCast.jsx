@@ -11,7 +11,7 @@ const MovieCast = () => {
             try {
                 const data = await FetchMovieActors(movieId)
                 setActors(data.cast)
-                console.log(data);
+                
            }catch  (error) {
                console.error('Ошибка при получении данных:', error);
           }
