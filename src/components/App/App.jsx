@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom"
 import css from "./App.module.css"
-import AppBar from "../AppBar/AppBar"
+
 import HomePage from "../../pages/HomePage"
 import MoviesPage from "../../pages/MoviesPage"
 import NotFoundPage from "../../pages/NotFoundPage"
 import MovieDetailsPage from "../../pages/MovieDetailsPage"
 import MovieCast from "../MovieCast/MovieCast"
 import MovieReviews from "../MovieReviews/MovieReviews"
+import Navigation from "../Navigation/Navigation"
 
 
 
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <div className={css.appConteiner}>
-      <AppBar/>
+     <Navigation />
       <Routes>
         <Route path="/" element={< HomePage />} />
        

@@ -5,17 +5,17 @@ import { fetchMovieById } from "../components/Gallery/Gallery";
 import css from "./MovieDetailsPage.module.css"
 
 const MovieDetailsPage = () => {
-    const params = useParams();
-    console.log(params);
+    
+   
     const { movieId } = useParams();
-    console.log(movieId);
+    
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
           const data = await fetchMovieById(movieId);
-          console.log(data);
+         
         setMovie(data);
       } catch (error) {
         console.error( error);
