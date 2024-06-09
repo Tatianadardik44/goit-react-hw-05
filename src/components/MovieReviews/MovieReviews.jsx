@@ -19,7 +19,7 @@ const MovieReviews = () => {
 
         }
         getReview()
-    },[])
+    },[movieId])
     return (
         <div>
             <ReviewsCard review={review } />

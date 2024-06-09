@@ -13,7 +13,7 @@ const HomePage = () => {
               const data = await fetchList();
               setMovies(data.results)
           } catch (error) {
-               console.error('Ошибка при получении данных:', error);
+               console.error('Ошибка  данных:', error);
           }
       }
       getData()

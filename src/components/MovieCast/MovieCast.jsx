@@ -18,7 +18,7 @@ const MovieCast = () => {
 
         }
         getActors()
-    },[])
+    },[movieId])
     return (
         <div>
             
