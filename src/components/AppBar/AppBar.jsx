@@ -9,7 +9,7 @@ const AppBar = () => {
         <header className={css.header}>
             <nav>
                 <NavLink to="/" className={buildLinkClass}>Home</NavLink>
-                <NavLink to="/moviesPage" className={buildLinkClass}>Movies</NavLink>
+                <NavLink to="/movies" className={buildLinkClass}>Movies</NavLink>
             </nav>
         </header>
     )
