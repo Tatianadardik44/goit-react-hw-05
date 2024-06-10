@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom"
 import css from "./App.module.css"
+import { lazy, Suspense } from "react";
 
-import HomePage from "../../pages/HomePage"
-import MoviesPage from "../../pages/MoviesPage"
-import NotFoundPage from "../../pages/NotFoundPage"
-import MovieDetailsPage from "../../pages/MovieDetailsPage"
 import MovieCast from "../MovieCast/MovieCast"
 import MovieReviews from "../MovieReviews/MovieReviews"
 import Navigation from "../Navigation/Navigation"
-
+const HomePage = lazy(() => import("../../pages/HomePage"));
+const MoviesPage = lazy(() => import("../../pages/MoviesPage"));
+const MovieDetailsPage = lazy(() => import("../../pages/MovieDetailsPage"));
+const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"))
 
 
 function App() {
@@ -17,7 +17,8 @@ function App() {
   return (
     <div className={css.appConteiner}>
      <Navigation />
-      <Routes>
+      <Suspense fallback={<div>Loading page..</div>}>
+           <Routes>
         <Route path="/" element={< HomePage />} />
        
         <Route path="/movies" element={<MoviesPage />} />
@@ -27,6 +28,7 @@ function App() {
           </Route >
         <Route path="*" element={<NotFoundPage/>} />
    </Routes>
+   </Suspense>
     </div>
   )
 }
