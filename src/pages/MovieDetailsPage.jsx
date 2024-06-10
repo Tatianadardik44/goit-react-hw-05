@@ -1,5 +1,5 @@
 
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchMovieById } from "../components/Gallery/Gallery";
 import css from "./MovieDetailsPage.module.css"
@@ -27,7 +27,8 @@ const MovieDetailsPage = () => {
   if (!movie) return <p>Загрузка...</p>;
 
   return (
-      <div>
+    <div>
+     
           <div className={css.poster}>
               <div> <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} height={320} width={200} /></div>
          <div> <h4>{movie.title}</h4>
