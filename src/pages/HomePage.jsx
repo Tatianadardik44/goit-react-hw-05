@@ -2,10 +2,11 @@
 import { useEffect, useState } from "react";
 import { fetchList } from "../components/Gallery/Gallery";
 import MovieList from "../components/MovieList/MovieList";
+import { useLocation } from "react-router-dom";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-
+const location = useLocation();
   useEffect(() => {
   
       async function getData() {
@@ -23,7 +24,7 @@ const HomePage = () => {
     <div>
       <p>Trending today</p>
       <ul>
-       <MovieList movies={movies } />
+        <MovieList movies={movies} location={ location} />
       </ul>
      
     </div>
