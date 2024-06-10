@@ -3,30 +3,41 @@ import {  Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom
 import { useEffect, useRef, useState } from "react";
 import { fetchMovieById } from "../components/Gallery/Gallery";
 import css from "./MovieDetailsPage.module.css"
+import { Vortex } from "react-loader-spinner";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
 const MovieDetailsPage = () => {
   const location = useLocation();
  const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(false);
+   const [error, setError] = useState(false);
   const backLink = useRef(location.state?.from ?? '/');
-  console.log(location);
+  
   useEffect(() => {
     const getData = async () => {
+      if (!movieId) return;
       try {
+        setLoading(true);
+        setError(false);
           const data = await fetchMovieById(movieId);
          
         setMovie(data);
       } catch (error) {
-        console.error( error);
-      }
+       setError(true)
+      } finally {
+      setLoading(false);
+    }
     };
     getData();
   }, [movieId]);
 
-  if (!movie) return <p>Загрузка...</p>;
+  if (!movie) return <Vortex />;
 
   return (
     <div>
+      {loading && <Vortex />}
+       {error && <ErrorMessage />}
      <Link to={backLink.current}>Go Back</Link>
           <div className={css.poster}>
               <div> <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} height={320} width={200} /></div>

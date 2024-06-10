@@ -1,25 +1,38 @@
 import { useEffect, useState } from "react"
 import { FetchMovie } from "../components/Gallery/Gallery";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import {  useLocation, useSearchParams } from "react-router-dom";
 import SearchForm from "../components/SearchForm/SearchForm";
+import MovieList from "../components/MovieList/MovieList";
+import { Vortex } from "react-loader-spinner";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
 const MoviesPage = () => {
     const location = useLocation();
-    
+    const [loading, setLoading] = useState(false);
+     const [error, setError] = useState(false);
     const [movies, setMovies] = useState([]);
     const [params] = useSearchParams()
    
     const query = params.get("query") ?? "";
       useEffect(() => {
-        if (!query) return
+          if (!query) return ;
             
            const fetchData = async () => {
-                try {
+               try {
+                   setLoading(true);
+                   setError(false)
                     const data = await FetchMovie(query);
-                    setMovies(data.results);
+                     if (data.results.length === 0) {
+                     setError(true);
+        } else {
+          setError(false);
+          setMovies(data.results);
+        }
                 } catch (error) {
-                    console.error("Ошибка при поиске фильмов:", error);
-                }
+                    setError(true)
+                } finally {
+      setLoading(false);
+    }
             };
             fetchData(); 
        
@@ -27,14 +40,10 @@ const MoviesPage = () => {
 
     return (
         <div>
-             <SearchForm/>
-            <div>
-                <ul>
-                    {movies.map(movie => (
-                        <li key={movie.id}><Link to={`/movies/${movie.id}`} state={{ from: location }}>{movie.title}</Link></li>)
-                         )}
-                </ul>
-            </div>
+            <SearchForm />
+            {loading && <Vortex />}
+             {error && <ErrorMessage />}
+             <MovieList  movies={movies} location={ location}/>
           </div>
     )
 }

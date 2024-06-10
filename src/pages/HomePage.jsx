@@ -3,20 +3,28 @@ import { useEffect, useState } from "react";
 import { fetchList } from "../components/Gallery/Gallery";
 import MovieList from "../components/MovieList/MovieList";
 import { useLocation } from "react-router-dom";
+import { Vortex } from "react-loader-spinner";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const location = useLocation();
-  console.log(location);
+  
   useEffect(() => {
   
       async function getData() {
-          try {
+        try {
+          setLoading(true);
+          setError(false);
               const data = await fetchList();
               setMovies(data.results)
           } catch (error) {
-               console.error('Ошибка  данных:', error);
-          }
+               setError(true);
+          } finally {
+      setLoading(false);
+    }
       }
       getData()
   }, []);
@@ -24,6 +32,8 @@ const HomePage = () => {
   return (
     <div>
       <p>Trending today</p>
+      {loading && <Vortex />}
+       {error && <ErrorMessage />}
       <ul>
         <MovieList movies={movies} location={ location} />
       </ul>

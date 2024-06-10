@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 const SearchForm = () => {
   const [inputValue, setInputValue] = useState("");
   const [params, setParams] = useSearchParams();
-
+ 
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -13,7 +13,7 @@ const SearchForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue.trim() === "") {
-      alert("Введите название фильма для поиска");
+      alert("Enter movie title");
       return;
     }
     setParams({ query: inputValue });
