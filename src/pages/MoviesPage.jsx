@@ -4,7 +4,8 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 import SearchForm from "../components/SearchForm/SearchForm";
 
 const MoviesPage = () => {
-   const location = useLocation();
+    const location = useLocation();
+    
     const [movies, setMovies] = useState([]);
     const [params] = useSearchParams()
    
@@ -30,7 +31,7 @@ const MoviesPage = () => {
             <div>
                 <ul>
                     {movies.map(movie => (
-                        <li key={movie.id}><Link to={`/movies/${movie.id}`} state={{ from: `${location.pathname}${location.search}` }}>{movie.title}</Link></li>)
+                        <li key={movie.id}><Link to={`/movies/${movie.id}`} state={{ from: location }}>{movie.title}</Link></li>)
                          )}
                 </ul>
             </div>

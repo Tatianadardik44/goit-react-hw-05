@@ -1,17 +1,15 @@
 
 import {  Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchMovieById } from "../components/Gallery/Gallery";
 import css from "./MovieDetailsPage.module.css"
 
 const MovieDetailsPage = () => {
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
-   
-    const { movieId } = useParams();
-    
+ const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-
+  const backLink = useRef(location.state?.from ?? '/');
+  console.log(location);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -29,7 +27,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-     <Link to={backLink}>Go Back</Link>
+     <Link to={backLink.current}>Go Back</Link>
           <div className={css.poster}>
               <div> <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} height={320} width={200} /></div>
          <div> <h4>{movie.title}</h4>
