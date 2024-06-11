@@ -16,11 +16,11 @@ const MoviesPage = () => {
     const query = params.get("query") ?? "";
       useEffect(() => {
           if (!query) return ;
-            
+             setLoading(true);
+                   setError(false)
            const fetchData = async () => {
                try {
-                   setLoading(true);
-                   setError(false)
+                  
                     const data = await FetchMovie(query);
                      if (data.results.length === 0) {
                      setError(true);

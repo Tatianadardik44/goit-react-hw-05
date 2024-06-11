@@ -23,9 +23,10 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const getData = async () => {
       if (!movieId) return;
-      try {
-        setLoading(true);
+      setLoading(true);
         setError(false);
+      try {
+        
           const data = await fetchMovieById(movieId);
          
         setMovie(data);

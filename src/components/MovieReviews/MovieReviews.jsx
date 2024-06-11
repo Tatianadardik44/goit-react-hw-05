@@ -12,13 +12,13 @@ const MovieReviews = () => {
     const [error, setError] = useState(false);
     useEffect(() => {
         async function getReview() {
-         
-            try {
-                setLoading(true);
+          setLoading(true);
                 setError(false);
+            try {
+               
                 const data = await FetchMovieReviews(movieId);
                 if (data.results.length === 0) {
-                   setReview(null) 
+                   setReview([]) 
                 } else {
                     setReview(data.results)
                 }

@@ -10,10 +10,11 @@ const MovieCast = () => {
     const [loading, setLoading] = useState(false);
      const [error, setError] = useState(false);
     useEffect(() => {
+        setLoading(true);
+        setError(false);
         async function getActors() {
             try {
-                setLoading(true);
-                setError(false);
+                
                 const data = await FetchMovieActors(movieId)
                 setActors(data.cast)
                 

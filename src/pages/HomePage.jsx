@@ -13,11 +13,11 @@ const HomePage = () => {
   const location = useLocation();
   
   useEffect(() => {
-  
+   setLoading(true);
+          setError(false);
       async function getData() {
         try {
-          setLoading(true);
-          setError(false);
+         
               const data = await fetchList();
               setMovies(data.results)
           } catch (error) {
