@@ -5,6 +5,9 @@ import { fetchMovieById } from "../components/Gallery/Gallery";
 import css from "./MovieDetailsPage.module.css"
 import { Vortex } from "react-loader-spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import { GoArrowLeft } from "react-icons/go";
+
+const defaultImg = 'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg'
 
 const MovieDetailsPage = () => {
   const location = useLocation();
@@ -38,10 +41,11 @@ const MovieDetailsPage = () => {
     <div>
       {loading && <Vortex />}
        {error && <ErrorMessage />}
-     <Link to={backLink.current}>Go Back</Link>
+      <Link to={backLink.current} className={css.linkButton}><GoArrowLeft className={ css.area} /> Go Back</Link>
           <div className={css.poster}>
-              <div> <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} height={320} width={200} /></div>
-         <div> <h4>{movie.title}</h4>
+        <div className={css.posterFoto }> <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : defaultImg} alt={movie.title} height={320} width={200} /></div>
+        <div className={css.description}>
+          <h2>{movie.title}</h2>
           <p>Vote count: {movie.vote_count} </p>
           <h4>Overview</h4>
           <p>{movie.overview}</p>
@@ -49,8 +53,8 @@ const MovieDetailsPage = () => {
               <p>{movie.release_date}</p>
               </div>
           </div>
-          <div>
-              <p>Additional information</p>
+          <div className={css.link}>
+              <b>Additional information</b>
               <ul>
                   <li>
                       <NavLink to="cast">Cast</NavLink>

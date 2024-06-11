@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-
+import css from "./SearchForm.module.css"
 const SearchForm = () => {
   const [inputValue, setInputValue] = useState("");
   const [params, setParams] = useSearchParams();
- 
-
-  const handleChange = (event) => {
+ const handleChange = (event) => {
     setInputValue(event.target.value);
   };
 
@@ -22,14 +20,14 @@ const SearchForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={css.form}>
       <input
         type="text"
-        placeholder="Введите название фильма"
+       
         value={inputValue}
         onChange={handleChange}
       />
-      <button type="submit">Search</button>
+      <button type="submit" className={css.btn}>Search</button>
     </form>
   );
 };

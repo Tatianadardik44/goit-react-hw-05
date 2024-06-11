@@ -22,8 +22,7 @@ const MovieCast = () => {
           }  finally {
       setLoading(false);
     }
-
-        }
+ }
         getActors()
     },[movieId])
     return (

@@ -1,5 +1,30 @@
 .poster {
   display: flex;
   border-bottom: 1px solid black;
-  margin-bottom: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+.posterFoto {
+  margin-right: 40px;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.linkButton {
+  max-width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid black;
+  border-radius: 2px 4px;
+  margin-left: 20px;
+}
+.area {
+  margin-right: 4px;
+}
+.link {
+  margin-left: 20px;
 }

@@ -2,7 +2,9 @@
   display: flex;
   width: 100%;
   border-bottom: 1px solid black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 .link {
   padding: 8px 16px;

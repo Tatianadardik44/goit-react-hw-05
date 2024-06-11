@@ -12,27 +12,30 @@ const MovieReviews = () => {
     const [error, setError] = useState(false);
     useEffect(() => {
         async function getReview() {
+         
             try {
                 setLoading(true);
                 setError(false);
-                const data = await FetchMovieReviews(movieId)
-               setReview(data.results)
-                
-                
-          }catch (error) {
+                const data = await FetchMovieReviews(movieId);
+                if (data.results.length === 0) {
+                   setReview(null) 
+                } else {
+                    setReview(data.results)
+                }
+                }catch (error) {
                 setError(true);
           } finally {
       setLoading(false);
     }
-
-        }
+ }
         getReview()
     },[movieId])
     return (
         <div>
             {loading && <Vortex />}
               {error && <ErrorMessage />}
-            <ReviewsCard review={review } />
+            {!loading && !error && review === null && <p>We don't have any reviews for this movie</p>}
+            {!loading && !error && review && <ReviewsCard review={review } />}
         </div>
 )
 }

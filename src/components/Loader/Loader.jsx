@@ -1,6 +1,4 @@
 import { Vortex } from "react-loader-spinner";
-
- 
 <Vortex
   visible={true}
   height="80"

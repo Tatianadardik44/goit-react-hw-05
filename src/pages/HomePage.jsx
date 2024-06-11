@@ -5,7 +5,7 @@ import MovieList from "../components/MovieList/MovieList";
 import { useLocation } from "react-router-dom";
 import { Vortex } from "react-loader-spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
-
+import css from "./HomePage.module.css"
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <p>Trending today</p>
+     <h2 className={css.title}>Trending today</h2>
       {loading && <Vortex />}
        {error && <ErrorMessage />}
       <ul>

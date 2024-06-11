@@ -41,5 +41,11 @@
   color: #888;
 }
 .appConteiner {
-  width: 1280px;
+  width: 1440px;
+}
+h4 {
+  margin: 0;
+}
+p {
+  margin: 0;
 }

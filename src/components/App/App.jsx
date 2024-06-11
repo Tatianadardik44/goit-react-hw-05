@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import css from "./App.module.css"
 import { lazy, Suspense } from "react";
-
 import MovieCast from "../MovieCast/MovieCast"
 import MovieReviews from "../MovieReviews/MovieReviews"
 import Navigation from "../Navigation/Navigation"
@@ -12,8 +11,6 @@ const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"))
 
 
 function App() {
-  
-
   return (
     <div className={css.appConteiner}>
      <Navigation />

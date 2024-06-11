@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.btn {
+  padding: 4px 10px;
+  border: 1px solid black;
+  margin-left: 12px;
+}
+.btn:hover {
+  background-color: blue;
+  color: white;
+}
