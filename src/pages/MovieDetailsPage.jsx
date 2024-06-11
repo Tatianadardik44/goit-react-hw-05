@@ -6,7 +6,10 @@ import css from "./MovieDetailsPage.module.css"
 import { Vortex } from "react-loader-spinner";
 import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 import { GoArrowLeft } from "react-icons/go";
-
+import clsx from "clsx";
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active)
+}
 const defaultImg = 'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg'
 
 const MovieDetailsPage = () => {
@@ -57,9 +60,9 @@ const MovieDetailsPage = () => {
               <b>Additional information</b>
               <ul>
                   <li>
-                      <NavLink to="cast">Cast</NavLink>
+                      <NavLink to="cast" className={buildLinkClass}>Cast</NavLink>
                       </li>
-                  <li> <NavLink to="reviews">Reviews</NavLink></li>
+                  <li> <NavLink to="reviews" className={buildLinkClass}>Reviews</NavLink></li>
               </ul>
               <Outlet/>
     </div>
