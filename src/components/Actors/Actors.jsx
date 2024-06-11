@@ -7,7 +7,7 @@ const Actors = ({ actors }) => {
                      <li key={actor.cast_id} className={css.card}>
                        <img src={actor.profile_path ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`: defaultImg} alt={actor.name} height={320} width={200}/>
                        <p><b>Actor:</b>  {actor.original_name}</p>
-                       <p><b>Character:</b>  { actor.character}</p>
+                       {actor.character ? <p><b>Character:</b>  { actor.character}</p>: null} 
                     </li>
                 )
                    
