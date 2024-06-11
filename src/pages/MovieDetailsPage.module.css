@@ -22,6 +22,10 @@
   border-radius: 2px 4px;
   margin-left: 20px;
 }
+.linkButton:hover {
+  background-color: blue;
+  color: white;
+}
 .area {
   margin-right: 4px;
 }
